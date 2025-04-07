@@ -1,10 +1,4 @@
-jpa02-Sauld04
-
-
-* TODO: Correct the links to repo below, 
-  then delete this TODO.  Replace it with 
-  a link to your repo, e.g. 
-  https://github.com/ucsb-cs156-s25/jpa02-cgaucho
+# jpa02-Sauld04
 
 Repo: https://github.com/ucsb-cs156-s25/jpa02-Sauld04
 
