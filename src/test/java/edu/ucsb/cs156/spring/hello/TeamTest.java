@@ -24,44 +24,16 @@ public class TeamTest {
         assertEquals("Team(name=test-team, members=[])", team.toString());
     }
 
-     @Test
-    public void equals_same_object_returns_true() {
-        assert(team.equals(team));
-    }
 
     @Test
-    public void equals_different_class_returns_false() {
-        assert(!team.equals("not a team"));
-    }
-
-    @Test
-    public void equals_same_name_and_same_members_returns_true() {
-        Team other = new Team("test-team");
-        other.addMember("Saul");
-        team.addMember("Saul");
-        assert(team.equals(other));
-    }
-
-    @Test
-    public void equals_same_name_different_members_returns_false() {
-        Team other = new Team("test-team");
-        other.addMember("Kev");
-        team.addMember("Saul");
-        assert(!team.equals(other));
-    }
-
-
-    @Test
-    public void hashCode_returns_the_same_hashCode() {
-        Team t1 = new Team();
-        t1.setName("foo");
-        t1.addMember("bar");
-        Team t2 = new Team();
-        t2.setName("foo");
-        t2.addMember("bar");
+    public void hashCode_same_name_and_members_same_hash() {
+        Team t1 = new Team("test-team");
+        t1.addMember("Saul");
+        Team t2 = new Team("test-team");
+        t2.addMember("Saul");
         assertEquals(t1.hashCode(), t2.hashCode());
     }
-   
+
     @Test
     public void hashCode_returns_expected_value() {
         Team t = new Team("test-team");
@@ -70,6 +42,23 @@ public class TeamTest {
         assertEquals(-1226298695, result);
     }
 
-    
+    @Test
+    public void equals_returns_true_when_same_object() {
+        assert(team.equals(team));
+    }
+
+    @Test
+    public void equals_returns_false_when_not_team_instance() {
+        assert(!team.equals("NotATeam"));
+    }
+
+    @Test
+    public void equals_returns_true_when_same_name_and_same_members() {
+        Team other = new Team("test-team");
+        other.addMember("Saul");
+        team.addMember("Saul");
+        assert(team.equals(other));
+    }
+
 
 }
