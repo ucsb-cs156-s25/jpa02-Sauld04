@@ -24,6 +24,31 @@ public class TeamTest {
         assertEquals("Team(name=test-team, members=[])", team.toString());
     }
 
+    @Test
+    public void equals_returns_false_when_same_name_different_members() {
+        Team other = new Team("test-team");
+        other.addMember("NotSaul");
+        team.addMember("Saul");
+        assert(!team.equals(other));
+    }
+
+    @Test
+    public void equals_returns_false_when_different_name_same_members() {
+        Team other = new Team("another-team");
+        other.addMember("Saul");
+        team.addMember("Saul");
+        assert(!team.equals(other));
+    }
+
+    @Test
+    public void equals_returns_false_when_different_name_and_members() {
+        Team other = new Team("another-team");
+        other.addMember("NotSaul");
+        team.addMember("Saul");
+        assert(!team.equals(other));
+    }
+
+
 
     @Test
     public void hashCode_same_name_and_members_same_hash() {
@@ -31,9 +56,10 @@ public class TeamTest {
         t1.addMember("Saul");
         Team t2 = new Team("test-team");
         t2.addMember("Saul");
+
         assertEquals(t1.hashCode(), t2.hashCode());
     }
-
+   
     @Test
     public void hashCode_returns_expected_value() {
         Team t = new Team("test-team");
